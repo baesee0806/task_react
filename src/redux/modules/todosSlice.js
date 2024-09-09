@@ -42,10 +42,11 @@ const todosSlice = createSlice({
       })
       .addCase(__deleteTodo.fulfilled, (state, action) => {
         state.status = "Complete";
-        state.list = state.list.filter((todo) => todo.id !== action.payload.id);
+        state.list = state.list.filter((todo) => todo.id !== action.payload);
       })
       .addCase(__deleteTodo.rejected, (state, action) => {
         state.status = "Fail";
+        state.error = action.error.message;
       });
   },
 });

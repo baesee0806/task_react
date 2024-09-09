@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Button,
   InputContainer,
@@ -18,7 +18,9 @@ function App() {
   const todos = useSelector((state) => state.todos.list);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
-
+  useEffect(() => {
+    console.log(todos);
+  }, [todos]);
   const onAddTodo = async () => {
     if (!title || !body) {
       alert("제목과 내용을 입력해주세요.");
@@ -29,6 +31,7 @@ function App() {
   };
 
   const onDeleteTodo = (id) => {
+    console.log(id);
     dispatch(__deleteTodo(id));
   };
 
